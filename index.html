@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Angular</title>
+        <link rel="stylesheet" href="./res/index.css"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet"> 
+    </head>
+    <body ng-app="myApp">
+        <div ng-controller="myCtrl">
+            <h1 class="main_heading">Angular table</h1>
+            <table class="json_table">
+                <tr>
+                    <th>Member id</th>
+                    <th>Team id</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Mobile number</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="number" ng-model="searchText.member_id" placeholder="search member id"/>
+                    </td>
+                    <td>
+                        <input type="number" ng-model="searchText.team_id" placeholder="search team id"/>
+                    </td>
+                    <td>
+                        <input type="text" ng-model="searchText.first_name" placeholder="search first name"/>
+                    </td>
+                    <td>
+                        <input type="text" ng-model="searchText.last_name" placeholder="search last name"/>
+                    </td>
+                    <td>
+                        <input type="number" ng-model="searchText.mobile_number" placeholder="search mobile number"/>
+                    </td>
+                    <td>
+                        <input type="email" ng-model="searchText.email" placeholder="search email"/>
+                    </td>
+                    <td>
+                        <input type="text" ng-model="searchText.gender" placeholder="search gender"/>
+                    </td>
+                </tr>
+                <tr ng-repeat="tm in teammembers|limitTo:rowlimit|filter:searchText">
+                    <td>{{tm.member_id}}</td>
+                    <td>{{tm.team_id}}</td>
+                    <td>{{tm.first_name|capitalize}}</td>
+                    <td>{{tm.last_name|capitalize}}</td>
+                    <td>{{tm.mobile_number|hideNumber}}</td>
+                    <td>{{tm.email}}</td>
+                    <td>{{tm.gender}}</td>
+                </tr>
+            </table>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="./res/script.js"></script>
+    </body>
+</html>
